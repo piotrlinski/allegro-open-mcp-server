@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1.7
+# Development image — bind-mount the source tree for fast iteration.
+#
+#   docker build -f docker/Dockerfile.dev -t allegro-mcp:dev .
+#   docker run --rm -i -v $(pwd):/app -e ALLEGRO_CLIENT_ID -e … allegro-mcp:dev
+
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+
+WORKDIR /app
+
+ENV UV_LINK_MODE=copy \
+    UV_PYTHON_DOWNLOADS=never \
+    PYTHONUNBUFFERED=1 \
+    ALLEGRO_LOG_DIR=/var/log/allegro-mcp
+
+# Project files are bind-mounted at runtime so changes show up without
+# rebuilding the image. We still need a baseline ``uv sync`` so the venv
+# exists when the container starts.
+COPY pyproject.toml uv.lock README.md ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --extra dev --frozen --no-install-project
+
+ENV PATH="/app/.venv/bin:$PATH"
+
+ENTRYPOINT ["uv", "run", "allegro-mcp"]

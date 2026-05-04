@@ -1,0 +1,34 @@
+# Excluded from the build context to keep images small and rebuilds fast.
+.git/
+.github/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.idea/
+.cache/
+.temp/
+
+# Build artefacts
+dist/
+build/
+site/
+*.egg-info/
+
+# Tests + docs aren't needed in the runtime image
+tests/
+docs/
+
+# Local-only files
+.env
+.env.local
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+
+# Source-control noise
+.gitignore
+.markdownlint.yaml
+.codespellrc
+.pre-commit-config.yaml

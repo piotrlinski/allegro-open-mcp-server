@@ -1,0 +1,7 @@
+[codespell]
+# Skip generated, vendored, and binary content.
+skip = .git,.venv,.mypy_cache,.pytest_cache,.ruff_cache,uv.lock,.temp,site,_site_check,*.min.css,*.min.js,*.svg,src/allegro_client/models/_generated,.cache
+# Polish words / e-commerce jargon that codespell flags as typos.
+# Extend as new false positives appear.
+ignore-words-list = nin,wirh,allegro,allediscount,allegrosandbox,asn,oauth
+quiet-level = 2

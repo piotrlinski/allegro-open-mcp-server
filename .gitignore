@@ -157,6 +157,20 @@ ENV/
 env.bak/
 venv.bak/
 
+# IDEs
+.idea/
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Built docs site
+site/
+
+# Auto-generated docs (regenerated on every docs build)
+docs/reference/tool-catalog.md
+
 # Spyder project settings
 .spyderproject
 .spyproject

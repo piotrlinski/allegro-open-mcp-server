@@ -1,0 +1,135 @@
+site_name: Allegro MCP
+site_description: MCP server for the Allegro REST API (allegro.pl), backed by a separable allegro_client SDK.
+site_url: https://piotrlinski.github.io/allegro-open-mcp-server/
+repo_url: https://github.com/piotrlinski/allegro-open-mcp-server
+repo_name: piotrlinski/allegro-open-mcp-server
+edit_uri: edit/master/docs/
+copyright: MIT — community project; not affiliated with Grupa Allegro.
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+    - content.action.view
+    - search.suggest
+    - search.highlight
+    - search.share
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - section-index
+  - include-markdown
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_root_heading: true
+            show_root_full_path: false
+            show_source: false
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            show_bases: false
+            show_if_no_docstring: false
+            docstring_style: google
+            docstring_section_style: table
+            members_order: source
+            filters: ["!^_"]
+            extensions:
+              - griffe_pydantic
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Permalink
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path: [".", "docs/_snippets"]
+      check_paths: false
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/piotrlinski/allegro-open-mcp-server
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/allegro-mcp/
+  generator: false
+
+watch:
+  - src
+  - scripts
+  - README.md
+
+nav:
+  - Home: index.md
+  - Tutorials:
+      - Quickstart: tutorials/quickstart.md
+      - Sandbox setup: tutorials/sandbox.md
+  - How-to guides:
+      - Pick an OAuth flow: how-to/oauth-flows.md
+      - Configure Claude Desktop: how-to/with-claude-desktop.md
+      - Configure Claude Code: how-to/with-claude-code.md
+      - Run with MCP Inspector: how-to/with-mcp-inspector.md
+      - Extract the standalone client: how-to/extract-allegro-client.md
+  - Reference:
+      - Configuration: reference/configuration.md
+      - Error codes: reference/error-codes.md
+      - Tool catalog: reference/tool-catalog.md
+  - Explanation:
+      - Architecture: explanation/architecture.md
+      - Security: explanation/security.md

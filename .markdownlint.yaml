@@ -1,0 +1,27 @@
+# Relaxed markdownlint config for the project's docs.
+#
+# Goals:
+#   - Catch real readability issues (missing alt text, broken headings).
+#   - Don't fight markdown idioms used heavily in mkdocs-material
+#     (admonitions, tabbed code, snippet includes).
+
+default: true
+
+# Disabled rules — too noisy for this project's idioms.
+MD013: false   # line length: not enforced; prose wraps for readability.
+MD024: false   # duplicate headings: tool docstrings often repeat "Args" etc.
+MD033: false   # inline HTML: Material's Front Matter & admonitions use it.
+MD036: false   # emphasis-as-heading: deliberate in some places.
+MD041: false   # first line h1: front-matter pages can start with metadata.
+MD046:         # code block style — fenced only.
+  style: fenced
+
+# Tightened rules.
+MD003:
+  style: atx                       # `# Heading`, not `Heading\n=====`.
+MD007:
+  indent: 2                        # nested list indent.
+MD025:
+  front_matter_title: ""           # don't enforce a top-level h1 in YAML front-matter.
+MD029:
+  style: ordered                   # `1.` `2.` `3.`, not all `1.`.
