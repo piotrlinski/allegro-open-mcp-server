@@ -170,6 +170,7 @@ site/
 
 # Auto-generated docs (regenerated on every docs build)
 docs/reference/tool-catalog.md
+docs/reference/licenses.md
 
 # Spyder project settings
 .spyderproject

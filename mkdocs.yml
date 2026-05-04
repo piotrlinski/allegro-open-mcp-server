@@ -130,6 +130,7 @@ nav:
       - Configuration: reference/configuration.md
       - Error codes: reference/error-codes.md
       - Tool catalog: reference/tool-catalog.md
+      - Third-party licenses: reference/licenses.md
   - Explanation:
       - Architecture: explanation/architecture.md
       - Security: explanation/security.md

@@ -1,8 +1,9 @@
-# allegro-mcp
+# Allegro MCP
 
 [![CI](https://github.com/piotrlinski/allegro-open-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/piotrlinski/allegro-open-mcp-server/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![mypy: strict](https://img.shields.io/badge/mypy-strict-2a6db2.svg)](https://mypy-lang.org/)
 
 A Python [MCP](https://modelcontextprotocol.io/) server for the
 [Allegro REST API](https://developer.allegro.pl/), backed by a
@@ -14,7 +15,7 @@ src/
 └── allegro_mcp/       # FastMCP wrapper exposing 268 tools
 ```
 
-## What you get
+## Highlights
 
 * **268 MCP tools** spanning all ~30 Allegro resource groups (offers,
   orders, shipments, messaging, billing, returns, disputes, payments,
@@ -32,6 +33,9 @@ src/
   multi-stage Docker build, GitHub Actions CI on Python 3.10/3.11/3.12.
 * **250+ unit tests**, including a layer-enforcement test that protects
   the future package-extraction boundary.
+* **MIT-licensed**, not affiliated with Grupa Allegro. Third-party
+  runtime-dependency licenses are inventoried in
+  [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ## Quickstart
 

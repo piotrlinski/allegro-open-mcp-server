@@ -39,7 +39,7 @@ def fetch_spec(force: bool = False) -> Path:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     if force or not SPEC_PATH.exists():
         print(f"→ downloading {SPEC_URL}")
-        with urllib.request.urlopen(SPEC_URL) as resp:  # noqa: S310 — known URL
+        with urllib.request.urlopen(SPEC_URL) as resp:
             SPEC_PATH.write_bytes(resp.read())
     print(f"  spec at {SPEC_PATH} ({SPEC_PATH.stat().st_size:,} bytes)")
     return SPEC_PATH

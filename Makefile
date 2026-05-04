@@ -40,7 +40,7 @@ TOKEN_STORE_VOLUME ?= $(HOME)/.allegro-mcp:/home/mcp/.allegro-mcp
 
 .DEFAULT_GOAL := help
 .PHONY: help build run inspector test lint format sync clean \
-        gen-models check-models-freshness gen-tools \
+        gen-models check-models-freshness gen-tools gen-licenses \
         docs-sync docs-serve docs-build docs-lint docs-link-check \
         docs-coverage docs-all docs-clean
 
@@ -91,15 +91,17 @@ check-models-freshness: ## Warn if the upstream OpenAPI spec has moved
 gen-tools: ## Emit the MCP tool inventory from the spec (markdown table)
 	$(UV) run python scripts/gen_tool_inventory.py
 
+gen-licenses: ## Refresh THIRD_PARTY_NOTICES.md + docs/reference/licenses.md
+	$(UV) run python scripts/gen_licenses.py
+
 # ---- Documentation --------------------------------------------------------
 
 docs-sync: ## Install docs dependencies (uv sync --extra docs)
 	$(UV) sync --extra docs
 
-docs-gen: ## Run every docs generator (tool catalog, error codes, config)
+docs-gen: ## Run every docs generator (tool catalog, third-party licenses)
 	$(UV) run python scripts/gen_tool_catalog.py
-	$(UV) run python scripts/gen_error_codes.py
-	$(UV) run python scripts/gen_configuration.py
+	$(UV) run python scripts/gen_licenses.py
 
 docs-serve: docs-gen ## Live-reload docs locally at http://127.0.0.1:8000
 	DISABLE_MKDOCS_2_WARNING=true $(UV) run mkdocs serve -a 127.0.0.1:8000

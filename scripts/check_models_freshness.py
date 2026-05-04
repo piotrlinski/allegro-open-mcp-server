@@ -18,9 +18,7 @@ import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-GENERATED_INIT = (
-    REPO_ROOT / "src" / "allegro_client" / "models" / "_generated" / "__init__.py"
-)
+GENERATED_INIT = REPO_ROOT / "src" / "allegro_client" / "models" / "_generated" / "__init__.py"
 SPEC_URL = "https://developer.allegro.pl/swagger.yaml"
 BANNER_RE = re.compile(r"Spec checksum: sha256:([0-9a-f]{64})")
 
@@ -38,7 +36,7 @@ def main() -> int:
     cached_digest = match.group(1)
 
     print(f"→ fetching {SPEC_URL}")
-    with urllib.request.urlopen(SPEC_URL) as resp:  # noqa: S310 — known URL
+    with urllib.request.urlopen(SPEC_URL) as resp:
         upstream = resp.read()
     upstream_digest = hashlib.sha256(upstream).hexdigest()
 
