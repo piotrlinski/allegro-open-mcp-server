@@ -1,0 +1,93 @@
+# Build and deploy the MkDocs site to GitHub Pages.
+#
+# Source markdown lives in docs/ on the master branch; mkdocs renders into
+# ./site, which is uploaded as a Pages artifact and deployed by GitHub's
+# native Pages-via-Actions pipeline. No gh-pages branch is needed.
+#
+# One-time setup (do this BEFORE the first run):
+#   1. Repo → Settings → Pages → Source = "GitHub Actions".
+#   2. Push any commit that touches docs/ (or run the workflow manually
+#      via the Actions tab → "Deploy docs" → "Run workflow").
+#
+# After the first successful run, the site is live at
+#   https://piotrlinski.github.io/allegro-open-mcp-server/
+
+name: Deploy docs
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "docs/**"
+      - "src/**"
+      - "scripts/gen_*.py"
+      - "mkdocs.yml"
+      - "pyproject.toml"
+      - "uv.lock"
+      - "README.md"
+      - "THIRD_PARTY_NOTICES.md"
+      - ".github/workflows/docs-deploy.yml"
+  workflow_dispatch:
+
+# Pages-via-Actions needs `pages: write` and `id-token: write`; `contents: read`
+# is the standard checkout permission.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pages deploys are unique per environment; cancel-in-progress=false keeps a
+# half-built site from clobbering a fully-built one when commits land back-to-back.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DISABLE_MKDOCS_2_WARNING: "true"
+    steps:
+      - name: Checkout (full history for git-revision plugin)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Pin Python 3.12
+        run: uv python pin 3.12
+
+      - name: Install dependencies
+        run: uv sync --extra dev --extra docs --frozen
+
+      - name: Generate auto-reference pages
+        # Tool catalog + third-party license inventory are gitignored and
+        # produced at build time so they always reflect the current
+        # dependency closure.
+        run: |
+          uv run python scripts/gen_tool_catalog.py
+          uv run python scripts/gen_licenses.py
+
+      - name: Build docs
+        run: uv run mkdocs build --strict --site-dir site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

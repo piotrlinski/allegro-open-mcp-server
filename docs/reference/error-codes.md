@@ -1,7 +1,7 @@
 # Error codes
 
 Tools return either a Pydantic response model or an
-[`ErrorResponse`](../) envelope on failure. The `error` field is one of:
+`ErrorResponse` envelope on failure. The `error` field is one of:
 
 ## Synthetic codes (raised by the client / MCP layer)
 

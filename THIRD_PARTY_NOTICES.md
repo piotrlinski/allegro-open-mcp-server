@@ -45,7 +45,7 @@ unparseable.
 | `certifi` | `2026.4.22` | Mozilla Public License 2.0 (MPL 2.0) | <https://github.com/certifi/python-certifi> |
 | `cffi` | `2.0.0` | MIT | <https://pypi.org/project/cffi/> |
 | `click` | `8.3.3` | BSD-3-Clause | <https://github.com/pallets/click/> |
-| `colorama` | `(conditional)` | BSD-3-Clause | <https://github.com/tartley/colorama> |
+| `colorama` | `0.4.6` | BSD License | <https://github.com/tartley/colorama> |
 | `cryptography` | `47.0.0` | Apache-2.0 OR BSD-3-Clause | <https://github.com/pyca/cryptography> |
 | `cyclopts` | `4.11.2` | Apache-2.0 | <https://github.com/BrianPugh/cyclopts> |
 | `dnspython` | `2.8.0` | ISC License (ISCL) | <https://www.dnspython.org> |

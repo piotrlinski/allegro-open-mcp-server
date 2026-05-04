@@ -15,7 +15,7 @@
 
 MCP speaks JSON-RPC over stdio. **Anything written to stdout corrupts
 the protocol stream**. The server's logging module
-([`allegro_mcp.logging`](../)) attaches only a `TimedRotatingFileHandler`
+(`allegro_mcp.logging`) attaches only a `TimedRotatingFileHandler`
 — never a `StreamHandler`. Interactive OAuth prompts (device-code URLs,
 authcode browser-fallback messages) write to **stderr** instead.
 

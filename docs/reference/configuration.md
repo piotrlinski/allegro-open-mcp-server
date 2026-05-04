@@ -1,6 +1,6 @@
 # Configuration
 
-Loaded by [`AllegroClientConfig`](../) and [`AllegroMCPConfig`](../) from
+Loaded by `AllegroClientConfig` and `AllegroMCPConfig` from
 environment variables prefixed with `ALLEGRO_`. CLI flags on
 `allegro-mcp` take precedence over env vars; env vars take precedence
 over defaults.
