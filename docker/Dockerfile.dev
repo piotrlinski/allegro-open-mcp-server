@@ -15,8 +15,9 @@ ENV UV_LINK_MODE=copy \
 
 # Project files are bind-mounted at runtime so changes show up without
 # rebuilding the image. We still need a baseline ``uv sync`` so the venv
-# exists when the container starts.
-COPY pyproject.toml uv.lock README.md ./
+# exists when the container starts. THIRD_PARTY_NOTICES.md is force-included
+# into the wheel; copying it satisfies hatchling's existence check.
+COPY pyproject.toml uv.lock README.md THIRD_PARTY_NOTICES.md ./
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --extra dev --frozen --no-install-project
 

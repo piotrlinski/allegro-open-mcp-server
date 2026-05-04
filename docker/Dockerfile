@@ -14,7 +14,10 @@ ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_PYTHON_DOWNLOADS=never
 
-COPY pyproject.toml uv.lock README.md ./
+# THIRD_PARTY_NOTICES.md must be present before ``uv sync`` so hatchling's
+# ``[tool.hatch.build.targets.wheel.force-include]`` doesn't trip on a
+# missing file when the editable wheel is built.
+COPY pyproject.toml uv.lock README.md THIRD_PARTY_NOTICES.md ./
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-install-project --no-dev
 
