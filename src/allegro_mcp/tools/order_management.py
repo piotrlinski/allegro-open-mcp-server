@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_order_events_using_get(
+def get_order_events(
     *, from_: str | None = None, type_: list[str] | None = None, limit: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get order events
@@ -41,7 +41,7 @@ def get_order_events_using_get(
 
 @mcp.tool
 @allegro_call
-def get_order_events_statistics_using_get() -> dict[str, Any] | ErrorResponse:
+def get_order_events_statistics() -> dict[str, Any] | ErrorResponse:
     """Get order events statistics
 
     Use this resource to returns object that contains event id and occurrence date of the latest event. It gives you current starting point for reading events. Read more: <a href="../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-znalezc-najnowsze-zdarzenie" target="_blank">PL</a> / <a href="../../tutorials/process-orders-PgPMlWDr8Cv#how-to-find-the-newest-event" target="_blank">EN</a>.
@@ -60,7 +60,7 @@ def get_order_events_statistics_using_get() -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_list_of_orders_using_get(
+def get_list_of_orders(
     *,
     offset: int | None = None,
     limit: int | None = None,
@@ -114,7 +114,7 @@ def get_list_of_orders_using_get(
 
 @mcp.tool
 @allegro_call
-def get_orders_details_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
+def get_orders_details(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Get an order's details
 
     Use this resource to get an order details. Read more: <a href="../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#szczegoly-zamowienia" target="_blank">PL</a> / <a href="../../tutorials/process-orders-PgPMlWDr8Cv#order-details" target="_blank">EN</a>.
@@ -133,7 +133,7 @@ def get_orders_details_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_orders_carriers_using_get() -> dict[str, Any] | ErrorResponse:
+def get_orders_carriers() -> dict[str, Any] | ErrorResponse:
     """Get a list of available shipping carriers
 
     Shipping carriers are essential to provide accurate tracking experience for customers. Use this resource to get a list of all available shipping carriers. This resource is rate limited to 50 requests per second. The response of this resource can be stored in accordance with returned caching headers. Read more: <a href="../../news/nowy-zasob-do-pobrania-identyfikatorow-przewoznikow-8dmljjGRGUE" target="_blank">PL</a> / <a href="../../news/new-resource-to-retrieve-available-delivery-company-id-VL6zDDdr4hk" target="_blank">EN</a>.
@@ -152,7 +152,7 @@ def get_orders_carriers_using_get() -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_order_shipments_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
+def get_order_shipments(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Get a list of parcel tracking numbers
 
     Get a list of parcel tracking numbers currently assigned to the order. Orders can be retrieved using REST API resource GET /order/checkout-forms. Please note that the shipment list may contain parcel tracking numbers added through other channels such as Moje Allegro or by the carrier that delivers the parcel. Read more: <a href="../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-pobrac-numery-przesylek-dodane-do-zamowienia" target="_blank">PL</a> / <a href="../../tutorials/process-orders-PgPMlWDr8Cv#retrieving-tracking-numbers" target="_blank">EN</a>. This resource is rate limited to 50 requests per second.
@@ -172,7 +172,7 @@ def get_order_shipments_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_order_shipments_using_post(
+def create_order_shipments(
     *, id: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Add a parcel tracking number
@@ -195,7 +195,7 @@ def create_order_shipments_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def set_order_fulfillment_using_put(
+def set_order_fulfillment(
     *, id: str, checkoutForm_revision: str | None = None, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Set seller order status
@@ -330,7 +330,7 @@ def get_allegro_pickup_drop_off_points_get(
 
 @mcp.tool
 @allegro_call
-def get_parcel_tracking_using_get(
+def get_parcel_tracking(
     *, carrierId: str, waybill: list[str] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get carrier parcel tracking history

@@ -5,6 +5,34 @@ Add the server to Claude Desktop's `claude_desktop_config.json`. Path:
 * macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 * Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
+## uvx (recommended — no clone needed)
+
+```json
+{
+  "mcpServers": {
+    "allegro": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/piotrlinski/allegro-open-mcp-server",
+        "allegro-mcp"
+      ],
+      "env": {
+        "ALLEGRO_CLIENT_ID": "your-client-id",
+        "ALLEGRO_CLIENT_SECRET": "your-client-secret",
+        "ALLEGRO_AUTH_FLOW": "device"
+      }
+    }
+  }
+}
+```
+
+`uvx` resolves the package on first run and caches it; later launches
+reuse the same ephemeral venv. Pin a release with
+`git+https://github.com/.../allegro-open-mcp-server@v0.1.0`.
+
+## From a local clone
+
 ```json
 {
   "mcpServers": {

@@ -23,7 +23,15 @@ Browse to `http://127.0.0.1:6274/`, click **Tools**, and try one of:
 * `me_get` — confirms auth works
 * `auth_status` — shows the cached token's scope + time-to-expiry
 
-## Without Docker
+## Without Docker, via uvx
+
+```bash
+ALLEGRO_CLIENT_ID=... ALLEGRO_CLIENT_SECRET=... ALLEGRO_AUTH_FLOW=device \
+npx @modelcontextprotocol/inspector \
+    uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server allegro-mcp
+```
+
+## Without Docker, from a local clone
 
 ```bash
 npx @modelcontextprotocol/inspector uv run allegro-mcp

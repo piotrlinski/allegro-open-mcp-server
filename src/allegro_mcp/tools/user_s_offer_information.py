@@ -58,7 +58,7 @@ def get_partial_product_offer(
 
 @mcp.tool
 @allegro_call
-def search_offers_using_get(
+def search_offers(
     *,
     offer_id: list[str] | None = None,
     name: str | None = None,

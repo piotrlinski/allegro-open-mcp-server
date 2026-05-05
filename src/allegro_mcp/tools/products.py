@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_flat_product_parameters_using_get(*, categoryId: str) -> dict[str, Any] | ErrorResponse:
+def get_flat_product_parameters(*, categoryId: str) -> dict[str, Any] | ErrorResponse:
     """Get product parameters available in given category
 
     Use this resource to get the list of product parameters available in given category. You can use these parameters to create a new product. Read more: <a href="../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-utworzyc-nowy-produkt" target="_blank">PL</a> / <a href="../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-create-a-product" target="_blank">EN</a>.

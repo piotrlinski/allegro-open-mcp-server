@@ -41,7 +41,7 @@ def get_public_seller_listing_using_get_1(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_after_sales_service_return_policy_using_post(
+def create_after_sales_service_return_policy(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create new user's return policy
@@ -63,9 +63,7 @@ def create_after_sales_service_return_policy_using_post(
 
 @mcp.tool
 @allegro_call
-def get_after_sales_service_return_policy_using_get(
-    *, returnPolicyId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_after_sales_service_return_policy(*, returnPolicyId: str) -> dict[str, Any] | ErrorResponse:
     """Get the user's return policy
 
     Use this resource to get a return policy details. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-warunki-zwrotow-przypisane-do-konta" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-return-policies-assigned-to-the-account" target="_blank">EN</a>.
@@ -85,7 +83,7 @@ def get_after_sales_service_return_policy_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def update_after_sales_service_return_policy_using_put(
+def update_after_sales_service_return_policy(
     *, returnPolicyId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change the user's return policy
@@ -108,7 +106,7 @@ def update_after_sales_service_return_policy_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_after_sales_service_return_policy_using_delete(
+def delete_after_sales_service_return_policy(
     *, returnPolicyId: str
 ) -> dict[str, Any] | ErrorResponse:
     """Delete the user's return policy
@@ -129,7 +127,7 @@ def delete_after_sales_service_return_policy_using_delete(
 
 @mcp.tool
 @allegro_call
-def get_public_seller_listing_using_get(
+def get_public_seller_listing(
     *, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the user's implied warranties
@@ -154,7 +152,7 @@ def get_public_seller_listing_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_after_sales_service_implied_warranty_using_post(
+def create_after_sales_service_implied_warranty(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create new user's implied warranty
@@ -176,7 +174,7 @@ def create_after_sales_service_implied_warranty_using_post(
 
 @mcp.tool
 @allegro_call
-def get_after_sales_service_implied_warranty_using_get(
+def get_after_sales_service_implied_warranty(
     *, impliedWarrantyId: str
 ) -> dict[str, Any] | ErrorResponse:
     """Get the user's implied warranty
@@ -198,7 +196,7 @@ def get_after_sales_service_implied_warranty_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def update_after_sales_service_implied_warranty_using_put(
+def update_after_sales_service_implied_warranty(
     *, impliedWarrantyId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change the user's implied warranty
@@ -245,7 +243,7 @@ def get_public_seller_listing_using_get_2(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_after_sales_service_warranty_using_post(
+def create_after_sales_service_warranty(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create new user's warranty
@@ -267,9 +265,7 @@ def create_after_sales_service_warranty_using_post(
 
 @mcp.tool
 @allegro_call
-def get_after_sales_service_warranty_using_get(
-    *, warrantyId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_after_sales_service_warranty(*, warrantyId: str) -> dict[str, Any] | ErrorResponse:
     """Get the user's warranty
 
     Use this resource to get a warranty details. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-informacje-o-gwarancjach-przypisanych-do-konta" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-warranties-assigned-to-the-account" target="_blank">EN</a>.
@@ -289,7 +285,7 @@ def get_after_sales_service_warranty_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def update_after_sales_service_warranty_using_put(
+def update_after_sales_service_warranty(
     *, warrantyId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change the user's warranty
@@ -312,7 +308,7 @@ def update_after_sales_service_warranty_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_after_sales_service_conditions_attachment_using_post(
+def create_after_sales_service_conditions_attachment(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create a warranty attachment metadata
@@ -335,7 +331,7 @@ def create_after_sales_service_conditions_attachment_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def upload_after_sales_service_conditions_attachment_using_put(
+def upload_after_sales_service_conditions_attachment(
     *, attachmentId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Upload an warranty attachment

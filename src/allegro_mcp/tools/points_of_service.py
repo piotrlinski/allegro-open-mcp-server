@@ -17,7 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_pos_using_post(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
+def create_pos(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Create a point of service
 
     Use this resource to create a point of service. Read more: <a href="../../news/punkty-odbioru-osobistego-8dmlj8qk7ik" target="_blank">PL</a> / <a href="../../news/points-of-service-Rdoz09ZE7sW" target="_blank">EN</a>.
@@ -37,7 +37,7 @@ def create_pos_using_post(*, body: dict[str, Any] | None = None) -> dict[str, An
 
 @mcp.tool
 @allegro_call
-def get_pos_list_using_get(
+def get_pos_list(
     *, seller_id: str | None = None, countryCode: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the user's points of service
@@ -61,7 +61,7 @@ def get_pos_list_using_get(
 
 @mcp.tool
 @allegro_call
-def get_pos_data_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
+def get_pos_data(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Get the details of a point of service
 
     Use this resource to get a details of a point of service for a given ID. Read more: <a href="../../news/punkty-odbioru-osobistego-8dmlj8qk7ik" target="_blank">PL</a> / <a href="../../news/points-of-service-Rdoz09ZE7sW" target="_blank">EN</a>.
@@ -81,9 +81,7 @@ def get_pos_data_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_pos_using_put(
-    *, id: str, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def modify_pos(*, id: str, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Modify a point of service
 
     Use this resource to modify a point of service. Read more: <a href="../../news/punkty-odbioru-osobistego-8dmlj8qk7ik" target="_blank">PL</a> / <a href="../../news/points-of-service-Rdoz09ZE7sW" target="_blank">EN</a>.
@@ -104,7 +102,7 @@ def modify_pos_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_pos_using_delete(*, id: str) -> dict[str, Any] | ErrorResponse:
+def delete_pos(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Delete a point of service
 
     Use this resource to delete a point of service. Read more: <a href="../../news/punkty-odbioru-osobistego-8dmlj8qk7ik" target="_blank">PL</a> / <a href="../../news/points-of-service-Rdoz09ZE7sW" target="_blank">EN</a>.

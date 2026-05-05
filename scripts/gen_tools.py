@@ -51,11 +51,33 @@ _READ_OPERATION_OVERRIDES: frozenset[str] = frozenset(
 )
 
 
+_USING_METHOD_SUFFIX = re.compile(r"_using_(?:get|post|put|patch|delete)$")
+
+# MCP imposes a 64-char limit on tool names. The renderer in FastMCP / the
+# Claude Desktop client both reject longer names. We enforce the cap here so
+# CI-time generation never produces an unbootable server.
+_MCP_TOOL_NAME_MAX = 64
+
+
 def _camel_to_snake(name: str) -> str:
-    """Turn ``getOfferEvents`` into ``get_offer_events``."""
+    """Turn ``getOfferEvents`` into ``get_offer_events``.
+
+    Also strips the redundant ``_using_<method>`` suffix Allegro adds to many
+    operationIds (e.g. ``...UsingGET``). The HTTP method is already encoded
+    in the tool's wire call, so carrying it in the name is noise — and a
+    handful of operationIds blow past MCP's 64-char tool-name cap with the
+    suffix attached.
+    """
     s1 = re.sub(r"(.)([A-Z][a-z]+)", r"\1_\2", name)
     s2 = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", s1)
-    return s2.lower().replace("__", "_")
+    snake = s2.lower().replace("__", "_")
+    snake = _USING_METHOD_SUFFIX.sub("", snake)
+    if len(snake) > _MCP_TOOL_NAME_MAX:
+        # Last-resort truncation. We never expect to reach this branch; if
+        # we do, surface it loudly so the maintainer can either lift the cap
+        # upstream or rename the operation manually.
+        snake = snake[:_MCP_TOOL_NAME_MAX].rstrip("_")
+    return snake
 
 
 def _slugify_tag(tag: str) -> str:

@@ -17,7 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_additional_services_group_using_post(
+def create_additional_services_group(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create additional services group
@@ -39,7 +39,7 @@ def create_additional_services_group_using_post(
 
 @mcp.tool
 @allegro_call
-def get_list_of_additional_services_groups_using_get(
+def get_list_of_additional_services_groups(
     *, offset: int | None = None, limit: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the user's additional services groups
@@ -63,9 +63,7 @@ def get_list_of_additional_services_groups_using_get(
 
 @mcp.tool
 @allegro_call
-def get_list_of_additional_services_definitions_categories_using_get() -> (
-    dict[str, Any] | ErrorResponse
-):
+def get_list_of_additional_services_definitions_categories() -> dict[str, Any] | ErrorResponse:
     """Get the additional services definitions by categories
 
     Use this resource to get additional services definitions, grouped by additional services categories, available on given marketplace. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-liste-dostepnych-uslug-dodatkowych" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-a-list-of-available-additional-services" target="_blank">EN</a>.
@@ -84,7 +82,7 @@ def get_list_of_additional_services_definitions_categories_using_get() -> (
 
 @mcp.tool
 @allegro_call
-def get_additional_services_group_using_get(*, groupId: str) -> dict[str, Any] | ErrorResponse:
+def get_additional_services_group(*, groupId: str) -> dict[str, Any] | ErrorResponse:
     """Get the details of an additional services group
 
     Use this resource to get additional services group for a given ID. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-wybrana-grupe-uslug-dodatkowych" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-a-group-of-additional-services-for-a-given-id" target="_blank">EN</a>.
@@ -104,7 +102,7 @@ def get_additional_services_group_using_get(*, groupId: str) -> dict[str, Any] |
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_additional_services_group_using_put(
+def modify_additional_services_group(
     *, groupId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modify an additional services group

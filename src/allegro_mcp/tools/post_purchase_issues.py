@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_list_of_issues_using_get(
+def get_list_of_issues(
     *,
     checkoutForm_id: str | None = None,
     limit: int | None = None,
@@ -46,7 +46,7 @@ def get_list_of_issues_using_get(
 
 @mcp.tool
 @allegro_call
-def get_issue_using_get(*, issueId: str) -> dict[str, Any] | ErrorResponse:
+def get_issue(*, issueId: str) -> dict[str, Any] | ErrorResponse:
     """Get a single dispute or claim
 
     Use this resource to get a single dispute or claim. Read more: <a href="../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#szczegolowe-informacje-o-dyskusji-reklamacji" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#detailed-information-about-the-dispute-claim" target="_blank">EN</a>.
@@ -65,7 +65,7 @@ def get_issue_using_get(*, issueId: str) -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_chat_from_issue_using_get(
+def get_chat_from_issue(
     *, issueId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the messages and state claim changes within a post purchase issue
@@ -90,7 +90,7 @@ def get_chat_from_issue_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def add_message_to_issue_using_post(
+def add_message_to_issue(
     *, issueId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Add a message to an issue
@@ -113,7 +113,7 @@ def add_message_to_issue_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def change_status_of_issue_using_post(
+def change_status_of_issue(
     *, issueId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change status of a claim
@@ -136,7 +136,7 @@ def change_status_of_issue_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_an_issue_attachment_using_post(
+def create_an_issue_attachment(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create an attachment declaration
@@ -159,7 +159,7 @@ def create_an_issue_attachment_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def upload_issue_attachment_using_put(
+def upload_issue_attachment(
     *, attachmentId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Upload an attachment
@@ -181,7 +181,7 @@ def upload_issue_attachment_using_put(
 
 @mcp.tool
 @allegro_call
-def get_issue_attachment_using_get(*, attachmentId: str) -> dict[str, Any] | ErrorResponse:
+def get_issue_attachment(*, attachmentId: str) -> dict[str, Any] | ErrorResponse:
     """Get an attachment
 
     Use this resource to get an attachment. Read more: <a href="../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#pobranie-zalacznika" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#attachment-related-to-dispute-claim" target="_blank">EN</a>.

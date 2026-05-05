@@ -39,6 +39,39 @@ src/
 
 ## Quickstart
 
+The fastest path is `uvx` — no clone, no virtualenv, no install:
+
+```bash
+ALLEGRO_CLIENT_ID=your-client-id \
+ALLEGRO_CLIENT_SECRET=your-client-secret \
+ALLEGRO_AUTH_FLOW=device \
+uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server allegro-mcp
+```
+
+`uvx` resolves the package, installs it into an ephemeral venv, and runs
+the `allegro-mcp` console script. The first run with
+`ALLEGRO_AUTH_FLOW=device` prints a verification URL + user code to
+stderr; approve in your browser and the refresh token persists at
+`~/.allegro-mcp/tokens.json` for next time.
+
+To pin a version (or test a branch / PR), append `@<rev>`:
+
+```bash
+uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server@v0.1.0 allegro-mcp
+```
+
+CLI flags work the same as env vars — handy when wiring an MCP client:
+
+```bash
+uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server allegro-mcp \
+    --client-id  your-client-id \
+    --client-secret  your-client-secret \
+    --auth-flow  device \
+    --environment  sandbox
+```
+
+If you'd rather work from a clone:
+
 ```bash
 git clone https://github.com/piotrlinski/allegro-open-mcp-server
 cd allegro-open-mcp-server
@@ -47,10 +80,6 @@ uv sync --extra dev
 cp .env.example .env             # fill in ALLEGRO_CLIENT_ID, ALLEGRO_CLIENT_SECRET, ALLEGRO_AUTH_FLOW
 uv run allegro-mcp               # speaks MCP over stdio
 ```
-
-On first run with `ALLEGRO_AUTH_FLOW=device`, the server prints a
-verification URL + user code to stderr; approve in your browser and the
-refresh token persists for next time.
 
 Full walkthrough → [docs/tutorials/quickstart.md](docs/tutorials/quickstart.md).
 

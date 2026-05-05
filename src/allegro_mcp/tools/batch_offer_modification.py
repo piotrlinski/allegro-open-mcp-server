@@ -17,7 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modification_command_using_put(
+def modification_command(
     *, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer modification
@@ -39,7 +39,7 @@ def modification_command_using_put(
 
 @mcp.tool
 @allegro_call
-def get_general_report_using_get(*, commandId: str) -> dict[str, Any] | ErrorResponse:
+def get_general_report(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Modification command summary
 
     Use this resource to find out how many offers were edited within one {commandId}. You will receive a summary with a number of successfully edited offers. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#edycja-wielu-ofert-jednoczesnie" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#editing-many-offers" target="_blank">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
@@ -58,7 +58,7 @@ def get_general_report_using_get(*, commandId: str) -> dict[str, Any] | ErrorRes
 
 @mcp.tool
 @allegro_call
-def get_tasks_using_get(
+def get_tasks(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modification command detailed report
@@ -83,7 +83,7 @@ def get_tasks_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def price_modification_command_using_put(
+def price_modification_command(
     *, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer price modification
@@ -105,9 +105,7 @@ def price_modification_command_using_put(
 
 @mcp.tool
 @allegro_call
-def get_price_modification_command_status_using_get(
-    *, commandId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_price_modification_command_status(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Change price command summary
 
     Returns status and summary of particular command execution. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#cena" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#price" target="_blank">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
@@ -126,7 +124,7 @@ def get_price_modification_command_status_using_get(
 
 @mcp.tool
 @allegro_call
-def get_price_modification_command_tasks_statuses_using_get(
+def get_price_modification_command_tasks_statuses(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change price command detailed report
@@ -151,7 +149,7 @@ def get_price_modification_command_tasks_statuses_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def batch_offer_modification_using_post(
+def batch_offer_modification(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer price and stock modification (beta)
@@ -173,9 +171,7 @@ def batch_offer_modification_using_post(
 
 @mcp.tool
 @allegro_call
-def batch_offer_modification_command_status_using_get(
-    *, commandId: str
-) -> dict[str, Any] | ErrorResponse:
+def batch_offer_modification_command_status(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Batch price and stock command summary (beta)
 
     Returns status and summary of particular command execution. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#cena-i-liczba-przedmiotow" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#price-and-stock" target="_blank">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
@@ -194,7 +190,7 @@ def batch_offer_modification_command_status_using_get(
 
 @mcp.tool
 @allegro_call
-def batch_offer_modification_command_task_statuses_using_get(
+def batch_offer_modification_command_task_statuses(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch price and stock command detailed report (beta)
@@ -219,7 +215,7 @@ def batch_offer_modification_command_task_statuses_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def quantity_modification_command_using_put(
+def quantity_modification_command(
     *, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer quantity modification
@@ -241,9 +237,7 @@ def quantity_modification_command_using_put(
 
 @mcp.tool
 @allegro_call
-def get_quantity_modification_command_status_using_get(
-    *, commandId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_quantity_modification_command_status(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Change quantity command summary
 
     Returns status and summary of the command. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#liczba-przedmiotow" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#quantity" target="_blank">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
@@ -262,7 +256,7 @@ def get_quantity_modification_command_status_using_get(
 
 @mcp.tool
 @allegro_call
-def get_quantity_modification_command_tasks_statuses_using_get(
+def get_quantity_modification_command_tasks_statuses(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Change quantity command detailed report
@@ -287,7 +281,7 @@ def get_quantity_modification_command_tasks_statuses_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def offer_automatic_pricing_modification_command_using_post(
+def offer_automatic_pricing_modification_command(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer automatic pricing rules modification
@@ -309,7 +303,7 @@ def offer_automatic_pricing_modification_command_using_post(
 
 @mcp.tool
 @allegro_call
-def getoffer_automatic_pricing_modification_command_status_using_get(
+def getoffer_automatic_pricing_modification_command_status(
     *, commandId: str
 ) -> dict[str, Any] | ErrorResponse:
     """Automatic pricing command summary
@@ -330,7 +324,7 @@ def getoffer_automatic_pricing_modification_command_status_using_get(
 
 @mcp.tool
 @allegro_call
-def getoffer_automatic_pricing_modification_command_tasks_statuses_using_get(
+def getoffer_automatic_pricing_modification_command_tasks_statuses(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Automatic pricing command detailed report

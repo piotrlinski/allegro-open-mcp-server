@@ -69,7 +69,7 @@ def list_seller_promotions_using_get_1(
 
 @mcp.tool
 @allegro_call
-def get_promotion_using_get(*, promotionId: str) -> dict[str, Any] | ErrorResponse:
+def get_promotion(*, promotionId: str) -> dict[str, Any] | ErrorResponse:
     """Get a promotion data by id
 
     <br> Use this resource to return the requested promotion. You need to use its unique id. <br> Read more about: Large order discount <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#pobierz-informacje-o-rabacie" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#retrieve-information-about-large-order-discount" target="_blank">EN</a>, Wholesale price list <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#pobierz-informacje-o-cenniku" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#retrieve-information-about-wholesale-price-list" target="_blank">EN</a>, Multipack <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#pobierz-informacje-o-rabacie-ilosciowym" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#information-about-an-quantitative-discount" target="_blank">EN</a>.
@@ -89,7 +89,7 @@ def get_promotion_using_get(*, promotionId: str) -> dict[str, Any] | ErrorRespon
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def update_promotion_using_put(
+def update_promotion(
     *, promotionId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modify a promotion
@@ -112,7 +112,7 @@ def update_promotion_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def deactivate_promotion_using_delete(*, promotionId: str) -> dict[str, Any] | ErrorResponse:
+def deactivate_promotion(*, promotionId: str) -> dict[str, Any] | ErrorResponse:
     """Deactivate a promotion by id
 
     Use this resource to deactivate the requested promotion. You need to use its unique id. <br> Read more about: Large order discount <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#usun-rabat" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#remove-large-order-discount" target="_blank">EN</a>, Wholesale price list <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#usun-cennik" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#remove-wholesale-price-list" target="_blank">EN</a>, Multipack <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#usun-rabat-ilosciowy" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#remove-an-quantitative-discount" target="_blank">EN</a>.
@@ -132,7 +132,7 @@ def deactivate_promotion_using_delete(*, promotionId: str) -> dict[str, Any] | E
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_or_modify_turnover_discount_using_put(
+def create_or_modify_turnover_discount(
     *, marketplaceId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create/modify turnover discount for marketplace
@@ -154,7 +154,7 @@ def create_or_modify_turnover_discount_using_put(
 
 @mcp.tool
 @allegro_call
-def get_turnover_discounts_using_get(
+def get_turnover_discounts(
     *, marketplaceId: list[str] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the list of turnover discounts
@@ -178,9 +178,7 @@ def get_turnover_discounts_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def deactivate_turnover_discounts_using_put(
-    *, marketplaceId: str
-) -> dict[str, Any] | ErrorResponse:
+def deactivate_turnover_discounts(*, marketplaceId: str) -> dict[str, Any] | ErrorResponse:
     """Deactivate turnover discount for marketplace
 
     Deactivate turnover discount for a given marketplace. Read more: <a href="../../tutorials/jak-zarzadzac-rabatami-promocjami-yPya2mj6zUP#deaktywuj-rabat-obrotowy" target="_blank">PL</a> / <a href="../../tutorials/how-to-manage-rebates-and-promotions-g05avdL0vT4#deactivate-turnover-discount" target="_blank">EN</a>. Currently, the only supported marketplace is `allegro-business-cz`. <br/> Turnover discount will stop being cumulated with the end of the current month. Discount based on cumulated turnover will stop being applied with the end of the next month. After that, the discount will be completely deactivated. <br/> When deactivating the discount that still has `ACTIVATING` status, turnover discount is deactivated immediately. In that case, no turnover discount will start being cumulated with the new month.

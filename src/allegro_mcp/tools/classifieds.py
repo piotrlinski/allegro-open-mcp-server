@@ -65,7 +65,7 @@ def classified_offers_stats_get(
 
 @mcp.tool
 @allegro_call
-def get_classified_packages_using_get(*, offerId: str) -> dict[str, Any] | ErrorResponse:
+def get_classified_packages(*, offerId: str) -> dict[str, Any] | ErrorResponse:
     """Get classified packages assigned to an offer
 
     Use this resource to retrieve classified packages currently assigned to an offer. Read more: <a href="../../tutorials/jak-wystawic-i-zarzadzac-ogloszeniem-K6r3Z47dKcy#dodatkowe-opcje-promowania" target="_blank">PL</a> / <a href="../../tutorials/listing-and-managing-classified-ads-5Ln0r6wkWs7#additional-promo-options" target="_blank">EN</a>.
@@ -85,7 +85,7 @@ def get_classified_packages_using_get(*, offerId: str) -> dict[str, Any] | Error
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def assign_classified_packages_using_put(
+def assign_classified_packages(
     *, offerId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Assign packages to a classified
@@ -107,7 +107,7 @@ def assign_classified_packages_using_put(
 
 @mcp.tool
 @allegro_call
-def get_classified_package_configurations_for_category_using_get(
+def get_classified_package_configurations_for_category(
     *, category_id: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get configurations of packages
@@ -130,9 +130,7 @@ def get_classified_package_configurations_for_category_using_get(
 
 @mcp.tool
 @allegro_call
-def get_classified_package_configuration_using_get(
-    *, packageId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_classified_package_configuration(*, packageId: str) -> dict[str, Any] | ErrorResponse:
     """Get the configuration of a package
 
     Use this resource to retrieve the configuration of a classifieds package. Read more: <a href="../../tutorials/jak-wystawic-i-zarzadzac-ogloszeniem-K6r3Z47dKcy#lista-pakietow-i-opcji-dodatkowych" target="_blank">PL</a> / <a href="../../tutorials/listing-and-managing-classified-ads-5Ln0r6wkWs7#list-of-promo-options" target="_blank">EN</a>.

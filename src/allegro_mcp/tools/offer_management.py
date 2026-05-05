@@ -82,7 +82,7 @@ def get_product_offer_processing_status(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_offer_using_delete(*, offerId: str) -> dict[str, Any] | ErrorResponse:
+def delete_offer(*, offerId: str) -> dict[str, Any] | ErrorResponse:
     """Delete a draft offer
 
     Use this resource to delete a draft offer. Read more: <a href="../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#szkic-oferty" target="_blank">PL</a> / <a href="../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#inactive-status" target="_blank">EN</a>.
@@ -102,7 +102,7 @@ def delete_offer_using_delete(*, offerId: str) -> dict[str, Any] | ErrorResponse
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_change_price_command_using_put(
+def create_change_price_command(
     *, offerId: str, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modify the Buy Now price in an offer
@@ -125,7 +125,7 @@ def create_change_price_command_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def change_publication_status_using_put(
+def change_publication_status(
     *, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer publish / unpublish
@@ -147,7 +147,7 @@ def change_publication_status_using_put(
 
 @mcp.tool
 @allegro_call
-def get_publication_report_using_get(*, commandId: str) -> dict[str, Any] | ErrorResponse:
+def get_publication_report(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Publish command summary
 
     Use this resource to retrieve information about the offer listing statuses. You will receive a summary with a number of correctly listed offers and errors. Read more: <a href="../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#zestawienie-zadan" target="_blank">PL</a> / <a href="../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#task-list" target="_blank">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
@@ -166,7 +166,7 @@ def get_publication_report_using_get(*, commandId: str) -> dict[str, Any] | Erro
 
 @mcp.tool
 @allegro_call
-def get_publication_tasks_using_get(
+def get_publication_tasks(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Publish command detailed report
@@ -210,7 +210,7 @@ def get_available_offer_promotion_packages() -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_offer_promo_options_using_post(
+def modify_offer_promo_options(
     *, offerId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modify offer promotion packages
@@ -232,7 +232,7 @@ def modify_offer_promo_options_using_post(
 
 @mcp.tool
 @allegro_call
-def get_offer_promo_options_using_get(*, offerId: str) -> dict[str, Any] | ErrorResponse:
+def get_offer_promo_options(*, offerId: str) -> dict[str, Any] | ErrorResponse:
     """Get offer promotion packages
 
     Use this resource to get promotion packages assigned to an offer. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-opcje-promowania-przypisane-do-oferty" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-promo-options-assigned-to-an-offer" target="_blank">EN</a>.
@@ -251,7 +251,7 @@ def get_offer_promo_options_using_get(*, offerId: str) -> dict[str, Any] | Error
 
 @mcp.tool
 @allegro_call
-def get_promo_options_for_seller_offers_using_get(
+def get_promo_options_for_seller_offers(
     *, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get promo options for seller's offers
@@ -276,7 +276,7 @@ def get_promo_options_for_seller_offers_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def promo_modification_command_using_put(
+def promo_modification_command(
     *, commandId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Batch offer promotion package modification
@@ -298,9 +298,7 @@ def promo_modification_command_using_put(
 
 @mcp.tool
 @allegro_call
-def get_promo_modification_command_result_using_get(
-    *, commandId: str
-) -> dict[str, Any] | ErrorResponse:
+def get_promo_modification_command_result(*, commandId: str) -> dict[str, Any] | ErrorResponse:
     """Modification command summary
 
     Use this resource to find out how many offers were edited within one {commandId}. You will receive a summary with a number of successfully edited offers and errors. Read more: <a href="../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-sprawdzic-szczegolowy-raport-zadania" target="_blank">PL</a> / <a href="../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-check-a-detailed-report-of-your-task" target="_blank">EN</a>.
@@ -319,7 +317,7 @@ def get_promo_modification_command_result_using_get(
 
 @mcp.tool
 @allegro_call
-def get_promo_modification_command_detailed_result_using_get(
+def get_promo_modification_command_detailed_result(
     *, commandId: str, limit: int | None = None, offset: int | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modification command detailed result

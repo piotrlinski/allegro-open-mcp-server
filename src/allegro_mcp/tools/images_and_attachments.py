@@ -17,9 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def upload_offer_image_using_post(
-    *, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def upload_offer_image(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Upload an offer image
 
     Upload image to our servers. You can choose from two upload options: * - provide a link and we will download an image for you * - send an image as binary data **Important!** Remember to use dedicated domain for upload, i.e. * - https://upload.allegro.pl for Production * - https://upload.allegro.pl.allegrosandbox.pl for Sandbox Read more about the rules for photos in an offer's gallery and description: <a href="https://help.allegro.com/pl/sell/a/zasady-dla-zdjec-w-galerii-i-w-opisie-8dvWz3eo4T5?marketplaceId=allegro-pl" target="_blank">PL</a> / <a href="https://help.allegro.com/en/sell/a/rules-for-images-in-the-gallery-and-in-descriptions-8dvWB8Y2PIq" target="_blank">EN</a>.
@@ -40,7 +38,7 @@ def upload_offer_image_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_offer_attachment_using_post(
+def create_offer_attachment(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create an offer attachment
@@ -63,7 +61,7 @@ def create_offer_attachment_using_post(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def upload_offer_attachment_using_put(
+def upload_offer_attachment(
     *, attachmentId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Upload an offer attachment

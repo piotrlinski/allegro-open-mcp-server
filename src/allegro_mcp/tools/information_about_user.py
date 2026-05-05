@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_user_ratings_using_get(
+def get_user_ratings(
     *,
     recommended: str | None = None,
     lastChangedAt_gte: str | None = None,
@@ -48,7 +48,7 @@ def get_user_ratings_using_get(
 
 @mcp.tool
 @allegro_call
-def get_user_rating_using_get(*, ratingId: str) -> dict[str, Any] | ErrorResponse:
+def get_user_rating(*, ratingId: str) -> dict[str, Any] | ErrorResponse:
     """Get the user's rating by given rating id
 
     Use this resource to receive your sales rating by given rating id. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-informacje-o-ocenie-sprzedazy" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-user-s-ratings-data" target="_blank">EN</a>.
@@ -68,7 +68,7 @@ def get_user_rating_using_get(*, ratingId: str) -> dict[str, Any] | ErrorRespons
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def answer_user_rating_using_put(
+def answer_user_rating(
     *, ratingId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Answer for user's rating
@@ -91,7 +91,7 @@ def answer_user_rating_using_put(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def user_rating_removal_using_put(
+def user_rating_removal(
     *, ratingId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Request removal of user's rating
@@ -113,7 +113,7 @@ def user_rating_removal_using_put(
 
 @mcp.tool
 @allegro_call
-def get_sale_quality_using_get() -> dict[str, Any] | ErrorResponse:
+def get_sale_quality() -> dict[str, Any] | ErrorResponse:
     """Get sales quality
 
     Use this resource to get current sales quality with at most 30 days history. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jakosc-sprzedazy" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#sales-quality" target="_blank">EN</a>.
@@ -151,7 +151,7 @@ def me_get() -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_list_of_additional_emails_using_get() -> dict[str, Any] | ErrorResponse:
+def get_list_of_additional_emails() -> dict[str, Any] | ErrorResponse:
     """Get user's additional emails
 
     Use this resource to get a list of all additional email addresses assigned to account. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-adresy-e-mail" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-email-addresses" target="_blank">EN</a>.
@@ -171,9 +171,7 @@ def get_list_of_additional_emails_using_get() -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def add_additional_email_using_post(
-    *, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def add_additional_email(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Add a new additional email address to user's account
 
     Use this resource to add a new additional email address to account. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-dodac-adres-e-mail" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-add-an-additional-email" target="_blank">EN</a>.
@@ -193,7 +191,7 @@ def add_additional_email_using_post(
 
 @mcp.tool
 @allegro_call
-def get_additional_email_using_get(*, emailId: str) -> dict[str, Any] | ErrorResponse:
+def get_additional_email(*, emailId: str) -> dict[str, Any] | ErrorResponse:
     """Get information about a particular additional email
 
     Use this resource to retrieve a single additional email. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-szczegolowe-informacje-o-adresie-e-mail" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-e-mail-details" target="_blank">EN</a>.
@@ -213,7 +211,7 @@ def get_additional_email_using_get(*, emailId: str) -> dict[str, Any] | ErrorRes
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_additional_email_using_delete(*, emailId: str) -> dict[str, Any] | ErrorResponse:
+def delete_additional_email(*, emailId: str) -> dict[str, Any] | ErrorResponse:
     """Delete an additional email address
 
     Use this resource to delete one of additional emails. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-usunac-adres-e-mail" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-remove-e-mail" target="_blank">EN</a>.

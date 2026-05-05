@@ -28,6 +28,25 @@ The full env-var matrix lives in [Configuration](../reference/configuration.md).
 
 ## 3. Run the server
 
+The fastest path is `uvx` — no clone, no virtualenv:
+
+```bash
+ALLEGRO_CLIENT_ID=your-client-id \
+ALLEGRO_CLIENT_SECRET=your-client-secret \
+ALLEGRO_AUTH_FLOW=device \
+uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server allegro-mcp
+```
+
+`uvx` materialises an ephemeral virtualenv, installs the package, and
+launches the console script. To pin a tag, branch, or commit, append
+`@<rev>`:
+
+```bash
+uvx --from git+https://github.com/piotrlinski/allegro-open-mcp-server@v0.1.0 allegro-mcp
+```
+
+If you cloned the repo, the equivalent is:
+
 ```bash
 uv sync --extra dev
 uv run allegro-mcp

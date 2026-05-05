@@ -17,9 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def calculate_fee_preview_using_post(
-    *, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def calculate_fee_preview(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Calculate fee and commission for an offer
 
     Provides information about fee and commission for an offer. This resource is limited to 25 requests per second for a single user. Read more: <a href="../../tutorials/jak-sprawdzic-oplaty-nn9DOL5PASX#kalkulator-oplat" target="_blank">PL</a> / <a href="../../tutorials/how-to-check-the-fees-3An6Wame3Um#fee-calculator" target="_blank">EN</a>.
@@ -39,9 +37,7 @@ def calculate_fee_preview_using_post(
 
 @mcp.tool
 @allegro_call
-def offer_quotes_public_using_get(
-    *, offer_id: list[str] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def offer_quotes_public(*, offer_id: list[str] | None = None) -> dict[str, Any] | ErrorResponse:
     """Get the user's current offer quotes
 
     This endpoint returns current offer quotes (listing and promo fees) cycles for authenticated user and list of offers. Read more: <a href="../../tutorials/jak-sprawdzic-oplaty-nn9DOL5PASX#data-naliczenia-kolejnej-oplaty" target="_blank">PL</a> / <a href="../../tutorials/how-to-check-the-fees-3An6Wame3Um#check-when-a-fee-is-charged" target="_blank">EN</a>.

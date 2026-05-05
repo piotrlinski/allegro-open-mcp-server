@@ -35,15 +35,31 @@ def test_auth_tools_present() -> None:
 def test_generated_tools_present() -> None:
     names = {getattr(t, "name", "") for t in _list_tools()}
     # Pick from each high-traffic module so a regression in any one
-    # surfaces here.
+    # surfaces here. We strip the trailing ``_using_<method>`` because the
+    # generator drops it; pick suffix-free names that survive that
+    # transformation.
     expected_subset = {
-        "search_offers_using_get",  # Offer management
+        "search_offers",  # Offer management
         "get_offer_events",  # User's offer information
         "get_listing_categories",  # Categories and parameters
-        "get_user_orders_get",  # Order management
     }
     # We don't fail on every name — Allegro renames operationIds —
     # but at least one from this set must survive any spec churn.
     assert names & expected_subset, (
         f"none of the canonical generated tool names found; missing: {expected_subset}"
+    )
+
+
+def test_no_tool_name_exceeds_mcp_limit() -> None:
+    """MCP / Claude Desktop reject tool names longer than 64 characters.
+
+    The generator already enforces the cap; this test is the safety net so
+    a future spec churn or generator regression doesn't sneak past CI.
+    """
+    overlimit = [
+        (name, len(name)) for t in _list_tools() if len(name := getattr(t, "name", "")) > 64
+    ]
+    assert overlimit == [], (
+        f"tool names over MCP's 64-char limit: {overlimit}. Tighten the "
+        f"generator in scripts/gen_tools.py."
     )

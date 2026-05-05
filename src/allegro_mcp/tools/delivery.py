@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_list_of_shipping_ratest_using_get(
+def get_list_of_shipping_ratest(
     *, marketplace: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the user's shipping rates
@@ -40,7 +40,7 @@ def get_list_of_shipping_ratest_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_shipping_rates_set_using_post(
+def create_shipping_rates_set(
     *, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Create a new shipping rates set
@@ -62,7 +62,7 @@ def create_shipping_rates_set_using_post(
 
 @mcp.tool
 @allegro_call
-def get_shipping_rates_set_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
+def get_shipping_rates_set(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Get the details of a shipping rates set
 
     Use this resource to get details of the given shipping rates set. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-cennik-dostaw" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-shipping-rates" target="_blank">EN</a>.
@@ -82,7 +82,7 @@ def get_shipping_rates_set_using_get(*, id: str) -> dict[str, Any] | ErrorRespon
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_shipping_rates_set_using_put(
+def modify_shipping_rates_set(
     *, id: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Edit a user's shipping rates set
@@ -150,7 +150,7 @@ def put_sale_delivery_settings(
 
 @mcp.tool
 @allegro_call
-def get_list_of_delivery_methods_using_get(
+def get_list_of_delivery_methods(
     *, marketplace: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get the list of delivery methods

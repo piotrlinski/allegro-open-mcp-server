@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_table_using_get(*, tableId: str) -> dict[str, Any] | ErrorResponse:
+def get_table(*, tableId: str) -> dict[str, Any] | ErrorResponse:
     """Get a size table
 
     Use this resource to get selected size table. Read more: <a href="../../news/tabele-rozmiarow-w-rest-api-LRV05q2dGtV" target="_blank">PL</a> / <a href="../../news/size-tables-in-rest-api-D7KP4DE1BH3" target="_blank">EN</a>.
@@ -36,7 +36,7 @@ def get_table_using_get(*, tableId: str) -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_table_using_put(
+def modify_table(
     *, tableId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Update a size table
@@ -58,7 +58,7 @@ def modify_table_using_put(
 
 @mcp.tool
 @allegro_call
-def get_tables_using_get() -> dict[str, Any] | ErrorResponse:
+def get_tables() -> dict[str, Any] | ErrorResponse:
     """Get the user's size tables
 
     Use this resource to get all size tables assigned to a seller account. Read more: <a href="../../news/tabele-rozmiarow-w-rest-api-LRV05q2dGtV" target="_blank">PL</a> / <a href="../../news/size-tables-in-rest-api-D7KP4DE1BH3" target="_blank">EN</a>.
@@ -78,9 +78,7 @@ def get_tables_using_get() -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_table_using_post(
-    *, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def create_table(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Create a size table
 
     Use this resource to create size table. Read more: <a href="../../news/tabele-rozmiarow-zmieniamy-istniejacy-zasob-i-dodajemy-nowe-zasoby-do-ich-obslugi-k1nyd21A4fP" target="_blank">PL</a> / <a href="../../news/size-tables-we-change-the-existing-resource-and-add-new-resources-to-handle-them-jn91bynlbC9" target="_blank">EN</a>.
@@ -100,7 +98,7 @@ def create_table_using_post(
 
 @mcp.tool
 @allegro_call
-def get_tables_templates_using_get() -> dict[str, Any] | ErrorResponse:
+def get_tables_templates() -> dict[str, Any] | ErrorResponse:
     """Get the size tables templates
 
     Use this resource to get all size tables templates. Read more: <a href="../../news/tabele-rozmiarow-zmieniamy-istniejacy-zasob-i-dodajemy-nowe-zasoby-do-ich-obslugi-k1nyd21A4fP" target="_blank">PL</a> / <a href="../../news/size-tables-we-change-the-existing-resource-and-add-new-resources-to-handle-them-jn91bynlbC9" target="_blank">EN</a>.

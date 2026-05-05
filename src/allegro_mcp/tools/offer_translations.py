@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_offer_translation_using_get(
+def get_offer_translation(
     *, offerId: str, language: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Get offer translations
@@ -40,7 +40,7 @@ def get_offer_translation_using_get(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def update_offer_translation_using_patch(
+def update_offer_translation(
     *, language: str, offerId: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Update offer translation
@@ -63,7 +63,7 @@ def update_offer_translation_using_patch(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_manual_translation_using_delete(
+def delete_manual_translation(
     *, language: str, offerId: str, element: str | None = None, products_id: str | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Delete offer translation

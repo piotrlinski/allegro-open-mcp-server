@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_categories_using_get(*, parent_id: str | None = None) -> dict[str, Any] | ErrorResponse:
+def get_categories(*, parent_id: str | None = None) -> dict[str, Any] | ErrorResponse:
     """Get IDs of Allegro categories
 
     Use this resource to traverse the Allegro categories tree. It returns the list of the given category's children or a list of the main Allegro categories. Read more: <a href="../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#uzupelnij-kategorie-i-parametry" target="_blank">PL</a> / <a href="../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#provide-category-and-parameters" target="_blank">EN</a>.
@@ -136,7 +136,7 @@ def get_category_events_using_get_1(
 
 @mcp.tool
 @allegro_call
-def category_suggestion_using_get(*, name: str | None = None) -> dict[str, Any] | ErrorResponse:
+def category_suggestion(*, name: str | None = None) -> dict[str, Any] | ErrorResponse:
     """Get categories suggestions
 
     Use this resource to receive suggested categories for given phrase. This resource is rate limited to 5 requests per second. Read more: <a href="../../news/udostepnilismy-nowy-zasob-dzieki-ktoremu-sprawdzisz-sugerowane-kategorie-dla-podanej-frazy-4RAl9jwX1FW" target="_blank">PL</a> / <a href="../../news/we-have-introduced-a-new-resource-that-allows-you-to-retrieve-the-suggested-categories-for-the-given-phrase-v8Wdy1EOyF0" target="_blank">EN</a>.

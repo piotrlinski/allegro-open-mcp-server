@@ -62,7 +62,7 @@ def list_seller_tags_get_1(
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def delete_tag_using_delete(*, tagId: str) -> dict[str, Any] | ErrorResponse:
+def delete_tag(*, tagId: str) -> dict[str, Any] | ErrorResponse:
     """Delete a tag
 
     Use this resource to delete the tag. Read more: <a href="../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl" target="_blank">PL</a> / <a href="../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL" target="_blank">EN</a>.

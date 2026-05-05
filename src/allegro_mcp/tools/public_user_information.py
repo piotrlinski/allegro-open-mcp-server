@@ -16,7 +16,7 @@ from ._runtime import allegro_call, get_client, mcp
 
 @mcp.tool
 @allegro_call
-def get_user_summary_using_get(*, userId: str) -> dict[str, Any] | ErrorResponse:
+def get_user_summary(*, userId: str) -> dict[str, Any] | ErrorResponse:
     """Get any user's ratings summary
 
     Use this resource to receive feedback statistics. Read more: <a href="../../news/nowe-zasoby-ktorymi-pobierzesz-informacje-o-ocenach-ZM9L1WPBbUb" target="_blank">PL</a> / <a href="../../news/new-resources-to-download-sales-feedback-d2VYERBMRiz" target="_blank">EN</a>.

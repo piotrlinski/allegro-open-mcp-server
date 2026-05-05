@@ -17,9 +17,7 @@ from ._runtime import allegro_call, get_client, mcp
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def create_contact_using_post(
-    *, body: dict[str, Any] | None = None
-) -> dict[str, Any] | ErrorResponse:
+def create_contact(*, body: dict[str, Any] | None = None) -> dict[str, Any] | ErrorResponse:
     """Create a new contact
 
     Use this resource to create a new contact. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-utworzyc-nowy-kontakt" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-create-new-contact" target="_blank">EN</a>.
@@ -39,7 +37,7 @@ def create_contact_using_post(
 
 @mcp.tool
 @allegro_call
-def get_list_of_contacts_using_get() -> dict[str, Any] | ErrorResponse:
+def get_list_of_contacts() -> dict[str, Any] | ErrorResponse:
     """Get the user's contacts
 
     Use this resource to get details of many contacts. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-liste-kontaktow" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-a-list-of-contacts" target="_blank">EN</a>.
@@ -58,7 +56,7 @@ def get_list_of_contacts_using_get() -> dict[str, Any] | ErrorResponse:
 
 @mcp.tool
 @allegro_call
-def get_contact_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
+def get_contact(*, id: str) -> dict[str, Any] | ErrorResponse:
     """Get contact details
 
     Use this resource to get contact details. Read more: <a href="../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-szczegoly-danego-kontaktu" target="_blank">PL</a> / <a href="../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-contact-details" target="_blank">EN</a>.
@@ -78,7 +76,7 @@ def get_contact_using_get(*, id: str) -> dict[str, Any] | ErrorResponse:
 @mcp.tool
 @allegro_call
 @requires_writes_enabled
-def modify_contact_using_put(
+def modify_contact(
     *, id: str, body: dict[str, Any] | None = None
 ) -> dict[str, Any] | ErrorResponse:
     """Modify contact details
